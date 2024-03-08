@@ -1,0 +1,48 @@
+﻿<Window x:Class="UserManage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserManage"
+        mc:Ignorable="d"
+        Title="메인화면" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="250*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnAdd_Click" BorderThickness="0,0,0,0">
+                <StackPanel Height="110" Width="85">
+                    <Image x:Name="btnImage1" Stretch="Fill" Height="95" Width="80" Source="/Resources/AddIcon.png" />
+                    <TextBlock Text="회원추가" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnSearch_Click" BorderThickness="0,0,0,0">
+                <StackPanel Height="110" Width="85">
+                    <Image x:Name="btnImage2"  Stretch="Fill" Height="95" Width="80" Source="/Resources/SearchingIcon.png" />
+                    <TextBlock Text="자료검색" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1" >
+            <GroupBox x:Name="groupBox1" Header="회원목록" Margin="10,0,10,10">
+                
+                
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <GroupBox x:Name="groupBox2" Header="전체자료" Margin="10,0,10,10" Visibility="Hidden" >
+                
+            </GroupBox>
+        </Grid>
+        
+        
+        
+
+    </Grid>
+</Window>

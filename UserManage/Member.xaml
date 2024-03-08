@@ -1,0 +1,52 @@
+﻿<Window x:Class="UserManage.Member"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UserManage"
+      mc:Ignorable="d" 
+      Title="회원가입" Height="550" Width="450">
+
+    <Grid>
+        <StackPanel Margin="0,0,0,83" >
+            <Label Content="아이디" FontWeight="Bold" />
+            <DockPanel>
+                <TextBox x:Name="txtbox_id" FontSize="16" Margin="5,5,5,5" Width="336" HorizontalAlignment="Left" />
+                <Button Content="중복확인" Width="75" Height="25" Click="Button_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </DockPanel>
+
+            <Label Content="비밀번호" FontWeight="Bold"/>
+            <PasswordBox FontSize="16" Margin="5,5,5,5" />
+
+            <Label Content="비밀번호 재확인" FontWeight="Bold"/>
+            <PasswordBox FontSize="16" Margin="5,5,5,5" />
+
+            <Label Content="이름" FontWeight="Bold" />
+            <TextBox FontSize="16" Margin="5,5,5,5" />
+
+            <Label Content="생년월일" FontWeight="Bold" />
+            <TextBox FontSize="16" Margin="5,5,5,5" />
+
+            <Label Content="전화번호" FontWeight="Bold" />
+            <TextBox FontSize="16" Margin="5,5,5,5" />
+
+            <Label Content="이메일 주소" FontWeight="Bold" />
+            <TextBox FontSize="16" Margin="5,5,5,5" />
+        </StackPanel>
+        
+        <Button Content="가입하기" HorizontalAlignment="Center" Margin="0,456,0,0" VerticalAlignment="Top" Height="29" Width="168">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
