@@ -30,7 +30,6 @@ D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\K4os.Compression.LZ4.St
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
 D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\UserManage.csproj.AssemblyReference.cache
-D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\UserManage.csproj.CopyComplete
 D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\UserManage.sourcelink.json
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
@@ -40,3 +39,4 @@ D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native\k5sprt64.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
+D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\UserManage.csproj.Up2Date
