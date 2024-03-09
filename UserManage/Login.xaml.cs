@@ -25,15 +25,10 @@ namespace UserManage
             InitializeComponent();
         }
 
-        private int id;
-        private string password;
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string password = pswBox.Password;
 
-            if(idBox.Text == "user" && password == "user")
+            if(idBox.Text == "user" &&  pswBox.Password == "user")
             {
                 // 새로운 창(MainWindow) 열기
                 MainWindow mainWindow = new MainWindow();
@@ -46,10 +41,6 @@ namespace UserManage
                 MessageBox.Show("아이디 또는 비밀번호를 잘못 입력했습니다.");
             }
 
-
-
-
-            
 
         }
 
