@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\C#_WPF\\UserManage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\member.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\member.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|d:\\c#_wpf\\usermanage\\usermanage\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}|UserManage\\UserManage.csproj|solutionrelative:usermanage\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,35 +38,69 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "UserManage\\MainWindow.xaml",
-              "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\MainWindow.xaml",
-              "RelativeToolTip": "UserManage\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-09T15:45:39.978Z",
+              "DocumentIndex": 3,
+              "Title": "Member.xaml.cs",
+              "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\Member.xaml.cs",
+              "RelativeDocumentMoniker": "UserManage\\Member.xaml.cs",
+              "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\Member.xaml.cs",
+              "RelativeToolTip": "UserManage\\Member.xaml.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwC8AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T04:57:14.992Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "Page1.xaml",
+              "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\Page1.xaml",
+              "RelativeDocumentMoniker": "UserManage\\Page1.xaml",
+              "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\Page1.xaml",
+              "RelativeToolTip": "UserManage\\Page1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-10T04:56:52.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\Login.xaml",
+              "RelativeDocumentMoniker": "UserManage\\Login.xaml",
+              "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\Login.xaml",
+              "RelativeToolTip": "UserManage\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-10T04:47:59.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Login.xaml.cs",
               "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\Login.xaml.cs",
               "RelativeDocumentMoniker": "UserManage\\Login.xaml.cs",
               "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\Login.xaml.cs",
               "RelativeToolTip": "UserManage\\Login.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-09T15:45:36.603Z",
+              "WhenOpened": "2024-03-10T04:47:01.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Page1.xaml.cs",
+              "DocumentMoniker": "D:\\C#_WPF\\UserManage\\UserManage\\Page1.xaml.cs",
+              "RelativeDocumentMoniker": "UserManage\\Page1.xaml.cs",
+              "ToolTip": "D:\\C#_WPF\\UserManage\\UserManage\\Page1.xaml.cs",
+              "RelativeToolTip": "UserManage\\Page1.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T04:56:57.234Z",
               "EditorCaption": ""
             }
           ]

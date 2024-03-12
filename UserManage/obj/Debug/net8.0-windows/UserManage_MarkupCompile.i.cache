@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\C#_WPF\UserManage\UserManage\App.xaml
-3-182839168
+4-3516662
 
-9-1369689122
+10401850957
 206-518602532
-Login.xaml;MainWindow.xaml;Member.xaml;
+Login.xaml;MainWindow.xaml;Member.xaml;Page1.xaml;
 
-True
+False
 

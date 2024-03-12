@@ -40,3 +40,5 @@ D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\UserManage.csproj.Up2Date
+D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\Page1.g.cs
+D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\Page1.baml
