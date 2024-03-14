@@ -23,26 +23,40 @@
             <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnSearch_Click" BorderThickness="0,0,0,0">
                 <StackPanel Height="110" Width="85">
                     <Image x:Name="btnImage2"  Stretch="Fill" Height="95" Width="80" Source="/Resources/SearchingIcon.png" />
-                    <TextBlock Text="자료검색" HorizontalAlignment="Center" />
+                    <TextBlock Text="회원검색" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="btnDelete" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnDelete_Click" BorderThickness="0,0,0,0">
+                <StackPanel Height="110" Width="85">
+                    <Image  Stretch="Fill" Height="95" Width="80" Source="/Resources/deleteIcon.png" />
+                    <TextBlock Text="회원삭제" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
         </Grid>
-        
+
         <Grid Grid.Row="1" >
             <GroupBox x:Name="groupBox1" Header="회원목록" Margin="10,0,10,10">
-                
-                
+                <ListView Grid.Row="0" Name="listView1" FontSize="15">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="아이디" Width="115"/>
+                            <GridViewColumn Header="이름" Width="80"/>
+                            <GridViewColumn Header="Email" Width="120"/>
+                            <GridViewColumn Header="생년월일" Width="120"/>
+                            <GridViewColumn Header="전화번호" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
             </GroupBox>
         </Grid>
 
         <Grid Grid.Row="1">
             <GroupBox x:Name="groupBox2" Header="전체자료" Margin="10,0,10,10" Visibility="Hidden" >
-                
-            </GroupBox>
-        </Grid>
-        
-        
-        
 
+            </GroupBox>
+
+        </Grid>
     </Grid>
 </Window>

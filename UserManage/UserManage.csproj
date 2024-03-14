@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Resources\AddIcon.png" />
+    <None Remove="Resources\deleteIcon.png" />
+    <None Remove="Resources\OpenTheDoor.gif" />
     <None Remove="Resources\picture.jpg" />
     <None Remove="Resources\pngwing.com.png" />
     <None Remove="Resources\SearchingIcon.png" />
@@ -17,6 +19,8 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +31,8 @@
 
   <ItemGroup>
     <Resource Include="Resources\AddIcon.png" />
+    <Resource Include="Resources\deleteIcon.png" />
+    <Resource Include="Resources\OpenTheDoor.gif" />
     <Resource Include="Resources\picture.jpg" />
     <Resource Include="Resources\pngwing.com.png" />
     <Resource Include="Resources\SearchingIcon.png" />

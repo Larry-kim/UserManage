@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage", "UserManage\UserManage.csproj", "{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManage", "UserManage\UserManage.csproj", "{0FE7A064-DFA6-40D6-97B1-D4777DF0F348}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{2714C839-63B5-42EA-B633-F0E275DDF40E}"
+	ProjectSection(SolutionItems) = preProject
+		app.config = app.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

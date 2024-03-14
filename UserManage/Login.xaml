@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserManage"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         mc:Ignorable="d"
         Title="로그인" Height="450" Width="450">
     <Grid>
@@ -33,7 +34,7 @@
             </Button.Resources>
         </Button>
 
-        <Image HorizontalAlignment="Center" Height="215" Margin="0,10,0,0" VerticalAlignment="Top" Width="215" Source="/Resources/picture.jpg"/>
+        <Image gif:AnimationBehavior.SourceUri="/Resources/OpenTheDoor.gif" HorizontalAlignment="Center" Height="215" Margin="0,10,0,0" VerticalAlignment="Top" Width="215" Source="/Resources/OpenTheDoor.gif"/>
 
     </Grid>
 </Window>
