@@ -36,25 +36,34 @@
         </Grid>
 
         <Grid Grid.Row="1" >
-            <GroupBox x:Name="groupBox1" Header="회원목록" Margin="10,0,10,10">
-                <ListView Grid.Row="0" Name="listView1" FontSize="15">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="아이디" Width="115"/>
-                            <GridViewColumn Header="이름" Width="80"/>
-                            <GridViewColumn Header="Email" Width="120"/>
-                            <GridViewColumn Header="생년월일" Width="120"/>
-                            <GridViewColumn Header="전화번호" Width="150"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
+            <GroupBox x:Name="groupBox1" Header="회원추가" Margin="10,0,10,10" Visibility="Hidden" >
+                
             </GroupBox>
         </Grid>
 
         <Grid Grid.Row="1">
-            <GroupBox x:Name="groupBox2" Header="전체자료" Margin="10,0,10,10" Visibility="Hidden" >
+            <GroupBox x:Name="groupBox2" Header="회원목록" Margin="10,0,10,10" >
+                <ListView Grid.Row="0" Name="listView1" FontSize="15">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="아이디" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                            
+                            <GridViewColumn Header="패스워드" DisplayMemberBinding="{Binding Password}" Width="100"/>
 
+                            <GridViewColumn Header="이름" DisplayMemberBinding="{Binding Name}" Width="90"/>
+                            
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="150"/>
+                            
+                            <GridViewColumn Header="생년월일" DisplayMemberBinding="{Binding Birth_Date}" Width="120"/>
+                            
+                            <GridViewColumn Header="전화번호" DisplayMemberBinding="{Binding Phone_Number}" Width="150"/>
+                            
+                            
+                            
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                
             </GroupBox>
 
         </Grid>

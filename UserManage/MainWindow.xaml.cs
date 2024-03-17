@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient; // DB를 사용하기 위해 추가
+﻿using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data; // DB를 사용하기 위해 추가
 using System.Data.SqlClient;
@@ -15,63 +15,39 @@ using System.Windows.Shapes;
 
 namespace UserManage
 {
+    // ListView에 표시할 데이터 클래스 정의
+    public class MyData
+    {
+        public string ID { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone_Number { get; set; }
+        public string Birth_Date { get; set; }
+        
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
-        private MySqlConnection connection;
+        public ObservableCollection<MyData> DataList { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            DataList = new ObservableCollection<MyData>();
+            listView1.ItemsSource = DataList; // ListView와 데이터 바인딩
         }
-        
+
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             groupBox1.Visibility = Visibility.Visible;
             groupBox2.Visibility = Visibility.Hidden;
 
-            // App.config에서 Connection String을 읽어옵니다.
-            string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-
-            // SQL 쿼리를 작성합니다. 여기서는 간단히 예시로 삽입 쿼리를 작성합니다.
-            string query = "INSERT INTO YourTableName (ColumnName1, ColumnName2) VALUES (@Value1, @Value2)";
-
-            try
-            {
-                // SqlConnection을 사용하여 데이터베이스에 연결합니다.
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    // SqlCommand를 사용하여 SQL 쿼리를 실행합니다.
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // 파라미터를 추가하여 SQL Injection 공격을 방지합니다.
-                        command.Parameters.AddWithValue("@Value1", "Value1");
-                        command.Parameters.AddWithValue("@Value2", "Value2");
-
-                        // 데이터베이스 연결을 열고 SQL 쿼리를 실행합니다.
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // 작업 결과에 따라 메시지를 표시합니다.
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("데이터가 성공적으로 삽입되었습니다.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("데이터 삽입에 실패했습니다.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"오류 발생: {ex.Message}");
-            }
         }
 
 
@@ -79,6 +55,38 @@ namespace UserManage
         {
             groupBox1.Visibility = Visibility.Hidden;
             groupBox2.Visibility = Visibility.Visible;
+
+            try
+            {
+                string connectionString = " Data Source=.; Initial Catalog=UserManage; Integrated Security=True "; // 데이터베이스 연결 문자열 설정
+                string query = "SELECT ID, Password, Name, Email, Birth_Date, Phone_Number FROM TableDB"; // 가져올 데이터의 SQL 쿼리
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataList.Clear(); // 기존의 데이터를 모두 지웁니다.
+
+                    while (reader.Read())
+                    {
+                        DataList.Add(new MyData { 
+                            ID = reader["ID"].ToString(), 
+                            Password = reader["Password"].ToString(),
+                            Name = reader["Name"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Birth_Date = reader["Birth_Date"].ToString(),
+                            Phone_Number = reader["Phone_Number"].ToString()
+                        });
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"데이터를 가져오는 중 오류가 발생했습니다: {ex.Message}");
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

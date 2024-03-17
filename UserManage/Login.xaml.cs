@@ -28,7 +28,7 @@ namespace UserManage
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (idBox.Text == "user" && pswBox.Password.Equals("user")) 
+            if (idBox.Text.Equals("user") && pswBox.Password.Equals("user")) 
             {
                 // 새로운 창(MainWindow) 열기
                 MainWindow mainWindow = new MainWindow();
