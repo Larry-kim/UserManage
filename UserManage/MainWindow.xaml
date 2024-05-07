@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserManage"
         mc:Ignorable="d"
-        Title="메인화면" Height="450" Width="800">
+        Title="메인화면" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120*"/>
@@ -20,10 +20,10 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnSearch_Click" BorderThickness="0,0,0,0">
+            <Button x:Name="btnInquiry" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnInquiry_Click" BorderThickness="0,0,0,0">
                 <StackPanel Height="110" Width="85">
                     <Image x:Name="btnImage2"  Stretch="Fill" Height="95" Width="80" Source="/Resources/SearchingIcon.png" />
-                    <TextBlock Text="회원검색" HorizontalAlignment="Center" />
+                    <TextBlock Text="회원조회" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
 
@@ -33,39 +33,89 @@
                     <TextBlock Text="회원삭제" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
+
+            <Button x:Name="btnTrainer" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90"  BorderThickness="0,0,0,0" Click="btnTrainer_Click">
+                <StackPanel Height="110" Width="85">
+                    <Image  Stretch="Fill" Height="95" Width="80" Source="/Resources/trainerIcon.png" />
+                    <TextBlock Text="트레이너 조회" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
         </Grid>
 
         <Grid Grid.Row="1" >
-            <GroupBox x:Name="groupBox1" Header="회원추가" Margin="10,0,10,10" Visibility="Hidden" >
-                
+            <GroupBox x:Name="groupBox1" Header="회원추가" Margin="10,0,10,10" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                        <Label Content="등록일자" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top"/>
+
+                        <Label Content="회원권" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="txtLineUp" HorizontalAlignment="Left" Margin="185,40,0,0" VerticalAlignment="Top" Width="140">
+                            <ComboBoxItem>PT</ComboBoxItem>
+                            <ComboBoxItem>헬스장 6개월</ComboBoxItem>
+                            <ComboBoxItem>헬스장 12개월</ComboBoxItem>
+                            <ComboBoxItem>PT + 헬스장 6개월</ComboBoxItem>
+                            <ComboBoxItem>PT + 헬스장 12개월</ComboBoxItem>
+                        </ComboBox>
+
+                        <Label Content="회원권 금액" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top"/>
+                        <Label Content="원" HorizontalAlignment="Left" Margin="475,35,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtCash" HorizontalAlignment="Left" Margin="375,40,0,0" TextAlignment="Right" VerticalAlignment="Top" Width="100"  PreviewTextInput="VerPreviewTextInput" TextChanged="txtCash_TextChanged" MaxLength="9"/>
+                        <Button x:Name="btnCreate" Content="회원등록" HorizontalAlignment="Left" Margin="665,15,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="btnCreate_Click"/>
+                        
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.ColumnSpan="3">
+
+                        <Label Content="성명" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="20,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="10"/>
+
+                        <Label Content="생년월일" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtBirthDate" HorizontalAlignment="Left" Margin="185,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" PreviewTextInput="VerPreviewTextInput" Width="120" MaxLength="6"/>
+
+                        <Label Content="연락처" HorizontalAlignment="Left" Margin="345,10,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="350,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="13" PreviewTextInput="VerPreviewTextInput" TextChanged="txtPhoneNumber_TextChanged"/>
+
+                        <Label Content="성별" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="radMale" Content="남성" HorizontalAlignment="Left" Margin="515,40,0,0" VerticalAlignment="Top"/>
+                        <RadioButton x:Name="radFemale" Content="여성" HorizontalAlignment="Left" Margin="595,40,0,0" VerticalAlignment="Top"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.ColumnSpan="3">
+                        <Label Content="회원 등록 사유" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtReason" HorizontalAlignment="Center" 
+            TextAlignment="Left"
+            VerticalAlignment="Bottom" 
+            Width="743" Height="57"/>
+
+                    </Grid>
+
+                </Grid>
             </GroupBox>
         </Grid>
 
         <Grid Grid.Row="1">
-            <GroupBox x:Name="groupBox2" Header="회원목록" Margin="10,0,10,10" >
-                <ListView Grid.Row="0" Name="listView1" FontSize="15">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="아이디" DisplayMemberBinding="{Binding ID}" Width="100"/>
-                            
-                            <GridViewColumn Header="패스워드" DisplayMemberBinding="{Binding Password}" Width="100"/>
+            <GroupBox x:Name="groupBox2" Header="회원목록" Margin="10,0,10,10" Visibility="Hidden">
+                <DataGrid Grid.Row="0" x:Name="dataGridView" AutoGenerateColumns="True" FontSize="16">
+                </DataGrid>
 
-                            <GridViewColumn Header="이름" DisplayMemberBinding="{Binding Name}" Width="90"/>
-                            
-                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="150"/>
-                            
-                            <GridViewColumn Header="생년월일" DisplayMemberBinding="{Binding Birth_Date}" Width="120"/>
-                            
-                            <GridViewColumn Header="전화번호" DisplayMemberBinding="{Binding Phone_Number}" Width="150"/>
-                            
-                            
-                            
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                
             </GroupBox>
 
         </Grid>
+
+
     </Grid>
 </Window>

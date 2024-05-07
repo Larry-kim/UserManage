@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UserManage"
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         mc:Ignorable="d"
-        Title="로그인" Height="450" Width="450">
+        Title="로그인" Height="450" Width="450" ResizeMode="NoResize">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="258" VerticalAlignment="Center" Margin="0,120,0,0" >
             <Label Content="아이디" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center" Width="45"/>
