@@ -15,10 +15,10 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,190,10,0" >
             <Label Content="비밀번호" HorizontalAlignment="Left" Height="26"  VerticalAlignment="Top" Width="57"/>
-            <PasswordBox x:Name="pswBox" Height="26" VerticalAlignment="Top" Width="194" FontSize="16" PasswordChar="*" MaxLength="8" />
+            <PasswordBox x:Name="PasswordBox" Height="26" VerticalAlignment="Top" Width="194" FontSize="16" PasswordChar="*" MaxLength="8" PasswordChanged="PasswordBox_PasswordChanged" />
         </StackPanel>
 
-        <Button Content="로그인" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" >
+        <Button Content="로그인" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Width="166" Click="Login_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>

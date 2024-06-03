@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserManage"
       mc:Ignorable="d" 
-      Title="회원가입" Height="550" Width="450">
+      Title="회원가입" Height="550" Width="450" ResizeMode="NoResize">
 
     <Grid>
         <StackPanel Margin="0,0,0,83" >
             <Label Content="아이디" FontWeight="Bold" />
             <DockPanel>
-                <TextBox x:Name="txtbox_id" FontSize="16" Margin="5,5,5,5" Width="336" HorizontalAlignment="Left" />
-                <Button Content="중복확인" Width="75" Height="25" Click="Button_Click">
+                <TextBox x:Name="txtID" FontSize="16" Margin="5,5,5,5" Width="336" HorizontalAlignment="Left" />
+                <Button Content="중복확인" Width="75" Height="25" Click="RepeatButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -22,25 +22,25 @@
             </DockPanel>
 
             <Label Content="비밀번호" FontWeight="Bold"/>
-            <PasswordBox FontSize="16" Margin="5,5,5,5" />
+            <PasswordBox x:Name="txtPassword" PasswordChanged="PasswordBox_PasswordChanged" FontSize="16" Margin="5,5,5,5" />
 
             <Label Content="비밀번호 재확인" FontWeight="Bold"/>
-            <PasswordBox FontSize="16" Margin="5,5,5,5" />
+            <PasswordBox x:Name="txtConfirm" PasswordChanged="ConfirmPasswordBox_PasswordChanged" FontSize="16" Margin="5,5,5,5" />
 
             <Label Content="이름" FontWeight="Bold" />
-            <TextBox FontSize="16" Margin="5,5,5,5" />
+            <TextBox x:Name="txtName" FontSize="16" Margin="5,5,5,5" />
 
             <Label Content="생년월일" FontWeight="Bold" />
-            <TextBox FontSize="16" Margin="5,5,5,5" />
+            <TextBox x:Name="txtBirth" FontSize="16" Margin="5,5,5,5" />
 
             <Label Content="전화번호" FontWeight="Bold" />
-            <TextBox FontSize="16" Margin="5,5,5,5" />
+            <TextBox x:Name="txtPhoneNum" FontSize="16" Margin="5,5,5,5" />
 
             <Label Content="이메일 주소" FontWeight="Bold" />
-            <TextBox FontSize="16" Margin="5,5,5,5" />
+            <TextBox x:Name="txtEmail" FontSize="16" Margin="5,5,5,5" />
         </StackPanel>
         
-        <Button Content="가입하기" HorizontalAlignment="Center" Margin="0,456,0,0" VerticalAlignment="Top" Height="29" Width="168">
+        <Button Content="가입하기" HorizontalAlignment="Center" Margin="0,456,0,0" VerticalAlignment="Top" Height="29" Width="168" Click="UserMake_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>

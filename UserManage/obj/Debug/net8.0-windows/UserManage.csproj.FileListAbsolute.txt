@@ -47,3 +47,5 @@ D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win-x86\native
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\C#_WPF\UserManage\UserManage\bin\Debug\net8.0-windows\XamlAnimatedGif.dll
+D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\DeleteMain.g.cs
+D:\C#_WPF\UserManage\UserManage\obj\Debug\net8.0-windows\DeleteMain.baml

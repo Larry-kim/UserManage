@@ -14,69 +14,185 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Reflection;
+using System.Security.Policy;
+using System.Xml.Linq;
+using System.Globalization;
 
 namespace UserManage
 {
     /// <summary>
     /// Member.xaml에 대한 상호 작용 논리
     /// </summary>
+    /// 
+
+    public static class SecureStringHelper
+    {
+        public static string ConvertToUnsecureString(this System.Security.SecureString securePassword)
+        {
+            if (securePassword == null)
+                throw new ArgumentNullException("securePassword");
+
+            IntPtr unmanagedString = IntPtr.Zero;
+            try
+            {
+                unmanagedString = System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocUnicode(securePassword);
+                return System.Runtime.InteropServices.Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
+    }
+
     public partial class Member : Window
     {
+        private string password;
+        private string confirmPassword;
 
         public Member()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            string strCon = "Server=test;Database=usermanage_db;Uid=root";
-            // MySql연결을 위한 connection 객체 생성
-            // MySqlConnection 클래스 괄호 안의 내용은, 본인의 MySQL 서버 상황에 맞는 값을 삽입 요망
-            MySqlConnection connection = new MySqlConnection(strCon);
+            PasswordBox passwordBox = sender as PasswordBox;
+            password = passwordBox.SecurePassword.ConvertToUnsecureString();
+        }
 
-            // 앞서 생성한 connection 객체를 통해 MySQL 서버 연결 유지
-            connection.Open();
+        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox confirmPasswordBox = sender as PasswordBox;
+            confirmPassword = confirmPasswordBox.SecurePassword.ConvertToUnsecureString();
+        }
 
-            // MySQL로 보내 ㄹ쿼리문인 문자열 Query 변수 선언
-            // City 테이블에 txtbox_name 이름으로 검색했을 때, 나오는 결과값 개수를 cnt 변수로 세도록 한다.
-            string Query = "SELECT *, COUNT(*) as cnt FROM usermanage_db WHERE id='" + txtbox_id.Text + "';";
+        // DB를 연결하기 위한 연결 문자열
+        private string connectionString = " Data Source=.; Initial Catalog=UserManage; Integrated Security=True; "; // 데이터베이스 연결 문자열 설정
 
-            // MySQL로 쿼리문을 보내기 위해 command 객체 생성 후 쿼리문 전달
-            MySqlCommand cmd = new MySqlCommand(Query, connection);
+        private void RepeatButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtID.Text;
 
-            // 받아온 결과값을 reader 객체에 저장
-            MySqlDataReader reader = cmd.ExecuteReader();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM User_Table WHERE 이름 = @Username";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("이미 사용중인 아이디입니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("사용 가능한 아이디입니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("오류가 발생했습니다: " + ex.Message, "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void UserMake_Click(object sender, RoutedEventArgs e)
+        {
 
             try
             {
-                while (reader.Read())
+                string id = txtID.Text.Trim();
+                string hashedPassword = HashPassword(password);
+                string name = txtName.Text;
+                string birth_date = txtBirth.Text;
+                string phone_number = txtPhoneNum.Text;
+                string email = txtEmail.Text;
+
+                // 비밀번호 확인
+                if (password != confirmPassword)
                 {
-                    // 받아온 reader 객체의 값 중, cnt 칼럼의 값이 0이 아니라면
-                    // -> cnt 칼럼의 값이 0이 아니란 의미는?
-                    // ---> txtbox_id에 입력된 텍스트값이 이미 테이블에 중복되어 있다는 뜻
-                    if (reader["cnt"].ToString()!= "0")
-                    {
-                        // 중복된 정보입니다. 메시지 박스 출력
-                        MessageBox.Show("중복된 아이디입니다.");
-                    }
-                    // 받아온 reader 객체의 값 중, cnt 칼럼의 값이 0이라면
-                    // -> cnt 칼럼의 값이 0이란 의미는?
-                    // ---> txtbox_id에 입력된 텍스트값이 이미 테이블에 미등록되어 있다는 뜻
-                    else
-                    {
-                        // 등록되지 않은 정보입니다. 메시지 박스 출력
-                        MessageBox.Show("사용가능한 아이디입니다.");
-                    }
+                    MessageBox.Show("비밀번호와 확인 비밀번호가 일치하지 않습니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
+
+                // 생년월일 형식 검증
+                if (!DateTime.TryParseExact(birth_date, "yyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                {
+                    MessageBox.Show("올바른 생년월일 형식을 입력하세요 (yyMMdd).", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // 이메일 형식 검증
+                if (!IsValidEmail(email))
+                {
+                    MessageBox.Show("올바른 이메일 주소를 입력하세요.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // SQL 쿼리 생성
+                    string query = "INSERT INTO User_Table VALUES (@User_ID, @Password, @Name, @Birth_Date, @Phone_Number, @Email)";
+                    SqlCommand command = new SqlCommand(query, connection);
+                          
+                    // 파라미터 추가
+                    command.Parameters.AddWithValue("@User_ID", id);
+                    command.Parameters.AddWithValue("@Password", hashedPassword);
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Birth_Date", birth_date);
+                    command.Parameters.AddWithValue("@Phone_Number", phone_number);
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("회원가입이 완료되었습니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                // 오류 발생 시 오류로그 출력
-                MessageBox.Show("오류로그 : " + ex.Message.ToString());
+                MessageBox.Show("오류가 발생했습니다: " + ex.Message, "오류", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            // MySQL 서버 연결 종료
-            connection.Close();
+
         }
+
+        // 이메일 형식 검증 메서드
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
     }
 }

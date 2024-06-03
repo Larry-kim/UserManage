@@ -30,6 +30,30 @@ namespace UserManage
             InitializeComponent();
         }
 
+        private int GenerateUniqueMemberId()
+        {
+            int memberId;
+            bool isUnique;
+            Random random = new Random();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                do
+                {
+                    memberId = random.Next(1000, 10000);
+                    string checkQuery = "SELECT COUNT(*) FROM Member_Table WHERE Member_ID = @MemberID";
+                    SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
+                    checkCommand.Parameters.AddWithValue("@MemberID", memberId);
+
+                    int count = (int)checkCommand.ExecuteScalar();
+                    isUnique = (count == 0);
+                } while (!isUnique);
+            }
+
+            return memberId;
+        }
+
         // TextBox에 정수만 입력 받고 싶을때 사용
         private void VerPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -97,8 +121,22 @@ namespace UserManage
             textBox.CaretIndex = textBox.Text.Length;
         }
 
+        private void ClaerMethod()
+        {
+            txtName.Clear();
+            txtPhoneNumber.Clear();
+            txtBirthDate.Clear();
+            txtReason.Clear();
+            txtCash.Clear();
+            txtLineUp.SelectedIndex = -1; // Clear the ComboBox selection
+            datePicker.SelectedDate = null; // Clear the DatePicker selection
+            radMale.IsChecked = false;
+            radFemale.IsChecked = false;
+        }
+
+
         // DB를 연결하기 위한 연결 문자열
-        private string connectionString = " Data Source=.; Initial Catalog=UserManage; Integrated Security=True "; // 데이터베이스 연결 문자열 설정
+        private string connectionString = " Data Source=.; Initial Catalog=UserManage; Integrated Security=True; "; // 데이터베이스 연결 문자열 설정
 
 
         // 회원 정보 추가란으로 변경하기 버튼
@@ -113,6 +151,9 @@ namespace UserManage
         {
             try
             {
+                // 랜덤 4자리 숫자 생성 및 중복 체크
+                int memberId = GenerateUniqueMemberId();
+
                 // 선택된 날짜 가져오기
                 DateTime? selectedDate = datePicker.SelectedDate; // 회원 등록일자
 
@@ -131,12 +172,15 @@ namespace UserManage
                 string cash = txtCash.Text; // 회원권 금액
 
                 // SQL 쿼리 생성
-                string query = "INSERT INTO member_Table VALUES (@Name, @BirthDate, @PhoneNumber, @Gender, @Reason, @SelectedDate, @Lineup, @Cash)";
+                string query = "INSERT INTO Member_Table VALUES (@MemberID, @Name, @BirthDate, @PhoneNumber, @Gender, @Reason, @SelectedDate, @Lineup, @Cash)";
 
                 // SqlConnection 및 SqlCommand를 사용하여 데이터베이스에 연결 및 쿼리 실행
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand(query, connection);
+
+                    // 파라미터 추가
+                    command.Parameters.AddWithValue("@MemberID", memberId);
                     command.Parameters.AddWithValue("@Name", name);
                     command.Parameters.AddWithValue("@BirthDate", birth_date);
                     command.Parameters.AddWithValue("@PhoneNumber", phone_number);
@@ -151,6 +195,7 @@ namespace UserManage
                 }
 
                 MessageBox.Show("회원 추가가 완료되었습니다.");
+                ClaerMethod();
             }
             catch (Exception ex)
             {
@@ -167,7 +212,7 @@ namespace UserManage
             
             try
             {
-                string query = "SELECT * FROM member_Table"; // 가져올 데이터의 SQL 쿼리
+                string query = "SELECT * FROM Member_Table"; // 가져올 데이터의 SQL 쿼리
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -187,6 +232,8 @@ namespace UserManage
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            DeleteMain deleteMain = new DeleteMain();
+            deleteMain.Show();
             
         }
 
@@ -195,5 +242,6 @@ namespace UserManage
 
         }
 
+        
     }
 }

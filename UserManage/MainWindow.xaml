@@ -12,7 +12,7 @@
             <RowDefinition Height="250*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="10,0,264,10">
             <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnAdd_Click" BorderThickness="0,0,0,0">
                 <StackPanel Height="110" Width="85">
                     <Image x:Name="btnImage1" Stretch="Fill" Height="95" Width="80" Source="/Resources/AddIcon.png" />
@@ -27,19 +27,28 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="btnDelete" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90" Click="btnDelete_Click" BorderThickness="0,0,0,0">
+            <Button x:Name="btnTrainer" HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90"  BorderThickness="0,0,0,0" Click="btnTrainer_Click">
+                <StackPanel Height="110" Width="85">
+                    <Image  Stretch="Fill" Height="95" Width="80" Source="/Resources/trainerIcon.png" />
+                    <TextBlock Text="트레이너 조회" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="btnDelete" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90"  BorderThickness="0,0,0,0" Click="btnDelete_Click">
                 <StackPanel Height="110" Width="85">
                     <Image  Stretch="Fill" Height="95" Width="80" Source="/Resources/deleteIcon.png" />
                     <TextBlock Text="회원삭제" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
 
-            <Button x:Name="btnTrainer" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Background="{x:Null}" Height="115" Width="90"  BorderThickness="0,0,0,0" Click="btnTrainer_Click">
-                <StackPanel Height="110" Width="85">
-                    <Image  Stretch="Fill" Height="95" Width="80" Source="/Resources/trainerIcon.png" />
-                    <TextBlock Text="트레이너 조회" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
+        </Grid>
+
+        <Grid Grid.Row="0" Margin="515,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250*"/>
+                <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
+
 
         </Grid>
 
@@ -74,7 +83,6 @@
                         <Label Content="원" HorizontalAlignment="Left" Margin="475,35,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="txtCash" HorizontalAlignment="Left" Margin="375,40,0,0" TextAlignment="Right" VerticalAlignment="Top" Width="100"  PreviewTextInput="VerPreviewTextInput" TextChanged="txtCash_TextChanged" MaxLength="9"/>
                         <Button x:Name="btnCreate" Content="회원등록" HorizontalAlignment="Left" Margin="665,15,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="btnCreate_Click"/>
-                        
                     </Grid>
 
                     <Grid Grid.Row="1" Grid.ColumnSpan="3">
